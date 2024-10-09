@@ -1,9 +1,9 @@
-# Mass Emailing System using lambda, s3, ses and eventbridge
+# Mass Emailing System using lambda, S3, SES and Cloudwatch
 ## Services Covered
 - Lambda
 - S3
 - SES
-- Eventbridge
+- Cloudwatch
 
 ## Overview
 This project automates the process of sending bulk emails using AWS Lambda, Amazon SES (Simple Email Service), and S3. The Lambda function retrieves recipient information from a CSV file stored in an S3 bucket, reads an email template also from S3, and sends personalized emails to each recipient using SES. The system can be triggered manually or scheduled via Amazon EventBridge to send emails at a specific time.
@@ -23,7 +23,7 @@ Now, lets start with the implementation
 - Use the code provided in the **mass-email.py** file for writing lambda function
 - now,  you have to provide permissions to IAMROLE of lambda function to access specific AWS services in order to execute lambda function successfully
 ### IAMROLE Permission Policiy
-You can attach permission policies to IAMROLE in two ways. One is AWS provided policies or you can make inline policy using the least privillage appraoch. Inline policy is a recommended option
+You can attach permission policies to *IAMROLE in two ways*. One is AWS provided policies or you can make *inline policy using the least privillage appraoch. Inline policy is a recommended option*
 
 #### AWS provided Policy
 you need to provide :
@@ -36,9 +36,10 @@ you need to provide :
 
 #### Inline Permission Policy
 you need to provide:
-- ffff
-- ffff
-- fffffffff
+- *S3 Inline permissions :* GetObject
+- *SES Inline permissions:* SendEmail
+- *Cloudwatch Logs permissions:* CreateLogGroup && CreateLogStream && PutLogEvents
+
 ## SES
 - You need to verify your email through which you are sending the emails
 - Add your email for verification , SES will send a notification to your email address , click on that to verify your email
